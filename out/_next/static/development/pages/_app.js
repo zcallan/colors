@@ -12931,7 +12931,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  body,\n  html,\n  #__next {\n    height: 100%;\n  }\n\n  @import url('https://rsms.me/inter/inter.css');\n  html { font-family: 'Inter', sans-serif; }\n  @supports (font-variation-settings: normal) {\n    html { font-family: 'Inter var', sans-serif; }\n  }\n\n  * {\n    box-sizing: border-box;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  body,\n  html,\n  #__next {\n    height: 100%;\n  }\n\n  @import url('https://rsms.me/inter/inter.css');\n  html { font-family: 'Inter', sans-serif; }\n  @supports (font-variation-settings: normal) {\n    html { font-family: 'Inter var', sans-serif; }\n  }\n\n  * {\n    box-sizing: border-box;\n  }\n\n  @-ms-viewport{\n    width: device-width;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -12978,19 +12978,19 @@ function (_NextApp) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 48
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(GlobalStyle, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 49
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Component, _extends({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 51
         },
         __self: this
       })));
