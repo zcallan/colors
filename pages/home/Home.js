@@ -6,11 +6,15 @@ import { useDebounce } from 'use-debounce';
 import randomColor from 'randomcolor';
 import { ChromePicker } from 'react-color';
 import Ink from 'react-ink';
+import fetch from 'isomorphic-unfetch';
+import { string } from 'prop-types';
 
 import LayoutMain from '../../layouts/LayoutMain';
 import Text from '../../components/Text';
 import Input from '../../components/Input';
 import Spinner from '../../components/Spinner';
+
+const API_URL = 'https://api.color.pizza/v1';
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -103,34 +107,42 @@ const PickerBackdrop = styled.div`
   bottom: 0;
 `;
 
-function Home() {
+let controller = null;
+let signal = null;
+
+function Home({ initialValue, initialName }) {
   const [isFetching, setFetching] = useState( false );
   const [error, setError] = useState( null );
-  const [colorName, setColorName] = useState( null );
+  const [colorName, setColorName] = useState( initialName );
   const [alternateColorName, setAlternateColorName] = useState( null );
-  const [value, setValue] = useState( '' );
+  const [value, setValue] = useState( initialValue );
   const [isPickerOpen, setPickerOpen] = useState( false );
   const [isShowingAlternateColorName, setShowingAlternateColorName] = useState( false );
-
-  const debouncedValue = useDebounce( value, 300 );
+  const [isFirstRender, setFirstRender] = useState( true );
 
   const isValidHex = value.length === 6 && hexColorRegex().test( `#${value}` );
+  const isValidAlternateColorName = alternateColorName && alternateColorName !== colorName;
+
+  const debouncedValue = useDebounce( value, 300 );
   const colorValue = isValidHex && Color( `#${value}` );
 
   useEffect(() => {
-    if ( debouncedValue.length === 6 ) {
+    if ( !isFirstRender && debouncedValue.length === 6 ) {
       getColorName( debouncedValue );
     }
   }, [debouncedValue] );
 
   useEffect(() => {
-    if ( !process.browser )
-      return;
+    setFirstRender( false );
+  }, [] );
 
-    const initialValue = randomColor().slice( 1 );
-
-    setValue( initialValue );
+  useEffect(() => {
   }, [process.browser] );
+
+  function handleClickColorName() {
+    if ( colorValue && isValidAlternateColorName )
+      setShowingAlternateColorName( !isShowingAlternateColorName );
+  }
 
   function handleChangeValue( event ) {
     handleChange( event.target.value );
@@ -143,13 +155,16 @@ function Home() {
   function handleChange( value ) {
     let val = value;
 
+    // Validation rules
     if ( val.startsWith( '#' )) val = value.slice( 1 ); // Remove the first letter
     if ( val.length > 6 ) return; // Set a max character limit
     if ( !( new RegExp( /^\w*$/ ).test( val ))) return; // Remove symbols etc.
 
-    setValue( val );
-
+    // Side effects
     if ( val.length < 6 ) setColorName( null ); // Reset the color name
+    if ( controller ) controller.abort(); // Cancel any ongoing API calls
+
+    setValue( val );
   }
 
   async function getColorName( hex ) {
@@ -164,7 +179,10 @@ function Home() {
     }
 
     try {
-      const response = await fetch( `https://api.color.pizza/v1/${hex}` );
+      controller = new AbortController();
+      signal = controller.signal;
+
+      const response = await fetch( `${API_URL}/${hex}`, { signal });
       const { colors, error } = await response.json();
 
       if ( error ) setError( error.message );
@@ -173,6 +191,10 @@ function Home() {
     catch ( error ) {
       // eslint-disable-next-line no-console
       console.warn( error );
+
+      // Ignore abort errors
+      if ( error.toString() === 'AbortError: The user aborted a request.' )
+        return;
 
       setError( error.toString());
     }
@@ -218,8 +240,8 @@ function Home() {
         <ColorName
           backgroundColor={error ? 'red' : ( colorValue ? colorValue.hex() : 'white' )}
           color={( colorValue && colorValue.isDark() && 'white' ) || 'black'}
-          onClick={() => setShowingAlternateColorName( !isShowingAlternateColorName )}
-          as={alternateColorName === colorName ? 'div' : 'button'}
+          onClick={handleClickColorName}
+          as={isValidAlternateColorName ? 'div' : 'button'}
         >
           <Ink />
 
@@ -236,12 +258,35 @@ function Home() {
           )}
         </ColorName>
 
-        <Text color="#787c84" size="xxs" align="center" opacity={alternateColorName === colorName ? 0 : 1}>
+        <Text color="#787c84" size="xxs" align="center" opacity={( colorValue && isValidAlternateColorName ) ? 1 : 0}>
           Click the color name to view an alternate
         </Text>
       </Wrapper>
     </LayoutMain>
   );
 }
+
+Home.propTypes = {
+  initialValue: string,
+  initialName: string,
+};
+
+Home.getInitialProps = async () => {
+  const initialValue = randomColor().slice( 1 );
+  let initialName = null;
+
+  try {
+    const response = await fetch( `${API_URL}/${initialValue}` );
+    const { colors } = await response.json();
+
+    if ( Array.isArray( colors ))
+      initialName = colors[0].name;
+  }
+  catch ( error ) {
+    // do nothing
+  }
+
+  return { initialValue, initialName };
+};
 
 export default Home;
