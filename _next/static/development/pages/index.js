@@ -267,32 +267,54 @@ function LayoutMain(_ref) {
       backgroundColor = _ref$backgroundColor === void 0 ? 'white' : _ref$backgroundColor,
       _ref$title = _ref.title,
       title = _ref$title === void 0 ? 'Title' : _ref$title,
+      _ref$description = _ref.description,
+      description = _ref$description === void 0 ? '' : _ref$description,
+      _ref$keywords = _ref.keywords,
+      keywords = _ref$keywords === void 0 ? 'hex,color,code,to,name' : _ref$keywords,
       children = _ref.children;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Wrapper, {
     backgroundColor: backgroundColor,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 24
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 25
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 26
     },
     __self: this
-  }, title)), children);
+  }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+    name: "description",
+    content: description,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+    name: "keywords",
+    content: keywords,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  })), children);
 }
 
 LayoutMain.propTypes = {
   backgroundColor: prop_types__WEBPACK_IMPORTED_MODULE_3__["string"],
   title: prop_types__WEBPACK_IMPORTED_MODULE_3__["string"],
+  description: prop_types__WEBPACK_IMPORTED_MODULE_3__["string"],
+  keywords: prop_types__WEBPACK_IMPORTED_MODULE_3__["string"],
   children: prop_types__WEBPACK_IMPORTED_MODULE_3__["node"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (LayoutMain);
@@ -1070,6 +1092,38 @@ exports.default = function (_ref) {
     _react2.default.createElement('path', { d: 'M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z' })
   );
 };
+
+/***/ }),
+
+/***/ "./node_modules/@reach/visually-hidden/es/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@reach/visually-hidden/es/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var style = {
+  border: 0,
+  clip: "rect(0 0 0 0)",
+  height: "1px",
+  width: "1px",
+  margin: "-1px",
+  padding: 0,
+  overflow: "hidden",
+  position: "absolute"
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var children = _ref.children;
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", { style: style, children: children });
+});
 
 /***/ }),
 
@@ -27279,10 +27333,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../layouts/LayoutMain */ "./layouts/LayoutMain.js");
-/* harmony import */ var _components_Text__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Text */ "./components/Text.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/Input */ "./components/Input.js");
-/* harmony import */ var _components_Spinner__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Spinner */ "./components/Spinner.js");
+/* harmony import */ var _reach_visually_hidden__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @reach/visually-hidden */ "./node_modules/@reach/visually-hidden/es/index.js");
+/* harmony import */ var _layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../layouts/LayoutMain */ "./layouts/LayoutMain.js");
+/* harmony import */ var _components_Text__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/Text */ "./components/Text.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Input */ "./components/Input.js");
+/* harmony import */ var _components_Spinner__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/Spinner */ "./components/Spinner.js");
 
 var _jsxFileName = "/Users/callan/projects/colors/pages/home/Home.js";
 
@@ -27312,6 +27367,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var API_URL = 'https://api.color.pizza/v1';
 var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "Home__Wrapper",
@@ -27321,7 +27377,7 @@ var InputWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div
   displayName: "Home__InputWrapper",
   componentId: "sc-1sbsg8u-1"
 })(["margin-bottom:20px;display:flex;"]);
-var StyledInput = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_components_Input__WEBPACK_IMPORTED_MODULE_13__["default"]).withConfig({
+var StyledInput = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"]).withConfig({
   displayName: "Home__StyledInput",
   componentId: "sc-1sbsg8u-2"
 })(["max-width:170px;width:100%;margin:0 auto;"]);
@@ -27514,22 +27570,36 @@ function Home(_ref) {
     return _getColorName.apply(this, arguments);
   }
 
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 207
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Wrapper, {
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    title: "Colors - Color Name From HEX Color Codes | zcallan",
+    description: "A simple website to get the name of colors from their HEX color code with no bs or distractions",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 208
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(InputWrapper, {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Wrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 209
+      lineNumber: 212
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_reach_visually_hidden__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 214
+    },
+    __self: this
+  }, "Color Name From HEX Color Codes")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(InputWrapper, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 217
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(StyledInput, {
@@ -27541,7 +27611,7 @@ function Home(_ref) {
     value: value,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 210
+      lineNumber: 218
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(InputColor, {
@@ -27552,19 +27622,19 @@ function Home(_ref) {
     color: colorValue && colorValue.isDark() && 'white' || 'black',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219
+      lineNumber: 227
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_ink__WEBPACK_IMPORTED_MODULE_8___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 224
+      lineNumber: 232
     },
     __self: this
   })), isPickerOpen && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Picker, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 228
+      lineNumber: 236
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(PickerBackdrop, {
@@ -27573,7 +27643,7 @@ function Home(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 229
+      lineNumber: 237
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(StyledChromePicker, {
@@ -27582,7 +27652,7 @@ function Home(_ref) {
     disableAlpha: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 231
+      lineNumber: 239
     },
     __self: this
   }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ColorName, {
@@ -27592,46 +27662,46 @@ function Home(_ref) {
     as: isValidAlternateColorName ? 'div' : 'button',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 240
+      lineNumber: 248
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_ink__WEBPACK_IMPORTED_MODULE_8___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 246
+      lineNumber: 254
     },
     __self: this
-  }), isFetching ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Spinner__WEBPACK_IMPORTED_MODULE_14__["default"], {
+  }), isFetching ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
     color: colorValue && colorValue.isDark() && 'white' || 'black',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 249
+      lineNumber: 257
     },
     __self: this
-  }) : error ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }) : error ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_13__["default"], {
     color: "white",
     align: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 251
+      lineNumber: 259
     },
     __self: this
-  }, String(error)) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }, String(error)) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_13__["default"], {
     color: colorValue && colorValue.isDark() && 'white' || 'black',
     align: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 255
+      lineNumber: 263
     },
     __self: this
-  }, isShowingAlternateColorName && alternateColorName || colorName || 'No color')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }, isShowingAlternateColorName && alternateColorName || colorName || 'No color')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_13__["default"], {
     color: "#787c84",
     size: "xxs",
     align: "center",
     opacity: colorValue && isValidAlternateColorName ? 1 : 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 261
+      lineNumber: 269
     },
     __self: this
   }, "Click the color name to view an alternate")));
