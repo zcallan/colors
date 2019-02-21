@@ -3,7 +3,7 @@
   "short_name": "Colors",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#fff",
+  "background_color": "#FFFFFF",
   "description": "A simple website to get the name of colors from their HEX color code with no bs or distractions",
   "icons": [{
     "src": "./icon_48.png",
