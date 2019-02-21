@@ -19,8 +19,8 @@ class Document extends NextDocument {
 
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,600" async defer />
 
-          <link rel="stylesheet" type="text/css" href="/static/normalize.min.css" async defer />
-          <link rel="stylesheet" type="text/css" href="/static/nprogress.min.css" async defer />
+          <link rel="stylesheet" type="text/css" href="./static/normalize.min.css" async defer />
+          <link rel="stylesheet" type="text/css" href="./static/nprogress.min.css" async defer />
         </Head>
 
         <body>
@@ -28,7 +28,7 @@ class Document extends NextDocument {
           <NextScript />
 
           <script type="text/javascript" defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossOrigin="anonymous" />
-          <script type="text/javascript" defer src="/static/ntc.js" />
+          <script type="text/javascript" defer src="./static/ntc.js" />
         </body>
       </html>
     );

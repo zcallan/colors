@@ -5,6 +5,7 @@ import hexColorRegex from 'hex-color-regex';
 import { useDebounce } from 'use-debounce';
 import randomColor from 'randomcolor';
 import { ChromePicker } from 'react-color';
+import Ink from 'react-ink';
 
 import LayoutMain from '../../layouts/LayoutMain';
 import Text from '../../components/Text';
@@ -47,21 +48,45 @@ const ColorName = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  border: 0;
+  cursor: pointer;
+  transition: 200ms ease transform;
+  position: relative;
+
+  :hover,
+  :focus,
+  :active {
+    outline: 0;
+    transform: scale(1.05);
+  }
 
   ${props => `
     background-color: ${props.backgroundColor};
+    color: ${props.color};
   `}
 `;
 
-const InputColor = styled.div`
+const InputColor = styled.button`
   height: 50px;
   width: 50px;
   border-radius: 50%;
   margin-left: 20px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: 200ms ease transform;
+  border: 0;
+  position: relative;
+
+  :hover,
+  :focus,
+  :active {
+    outline: 0;
+    transform: scale(1.1);
+  }
 
   ${props => `
     background-color: ${props.backgroundColor};
+    color: ${props.color};
   `}
 `;
 
@@ -172,7 +197,10 @@ function Home() {
           <InputColor
             onClick={() => setPickerOpen( true )}
             backgroundColor={`#${isValidHex ? value : 'ffffff'}`}
-          />
+            color={( colorValue && colorValue.isDark() && 'white' ) || 'black'}
+          >
+            <Ink />
+          </InputColor>
 
           {isPickerOpen && (
             <Picker>
@@ -189,8 +217,12 @@ function Home() {
 
         <ColorName
           backgroundColor={error ? 'red' : ( colorValue ? colorValue.hex() : 'white' )}
+          color={( colorValue && colorValue.isDark() && 'white' ) || 'black'}
           onClick={() => setShowingAlternateColorName( !isShowingAlternateColorName )}
+          as={alternateColorName === colorName ? 'div' : 'button'}
         >
+          <Ink />
+
           {isFetching ? (
             <Spinner color={( colorValue && colorValue.isDark() && 'white' ) || 'black'} />
           ) : error ? (
