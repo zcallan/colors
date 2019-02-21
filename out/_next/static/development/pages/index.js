@@ -6503,6 +6503,33 @@ module.exports = function hexColorRegex(opts) {
 
 /***/ }),
 
+/***/ "./node_modules/isomorphic-unfetch/browser.js":
+/*!****************************************************!*\
+  !*** ./node_modules/isomorphic-unfetch/browser.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = window.fetch || (window.fetch = __webpack_require__(/*! unfetch */ "./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs").default || __webpack_require__(/*! unfetch */ "./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs"));
+
+
+/***/ }),
+
+/***/ "./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function(e,n){return n=n||{},new Promise(function(t,r){var s=new XMLHttpRequest;for(var o in s.open(n.method||"get",e,!0),n.headers)s.setRequestHeader(o,n.headers[o]);function u(){var e,n=[],t=[],r={};return s.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm,function(s,o,u){n.push(o=o.toLowerCase()),t.push([o,u]),r[o]=(e=r[o])?e+","+u:u}),{ok:2==(s.status/100|0),status:s.status,statusText:s.statusText,url:s.responseURL,clone:u,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},headers:{keys:function(){return n},entries:function(){return t},get:function(e){return r[e.toLowerCase()]},has:function(e){return e.toLowerCase()in r}}}}s.withCredentials="include"==n.credentials,s.onload=function(){t(u())},s.onerror=r,s.send(n.body||null)})});;
+//# sourceMappingURL=unfetch.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_DataView.js":
 /*!******************************************!*\
   !*** ./node_modules/lodash/_DataView.js ***!
@@ -27248,10 +27275,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_color__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react_ink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-ink */ "./node_modules/react-ink/dist/ink.js");
 /* harmony import */ var react_ink__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_ink__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/LayoutMain */ "./layouts/LayoutMain.js");
-/* harmony import */ var _components_Text__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Text */ "./components/Text.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/Input */ "./components/Input.js");
-/* harmony import */ var _components_Spinner__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Spinner */ "./components/Spinner.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../layouts/LayoutMain */ "./layouts/LayoutMain.js");
+/* harmony import */ var _components_Text__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Text */ "./components/Text.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/Input */ "./components/Input.js");
+/* harmony import */ var _components_Spinner__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Spinner */ "./components/Spinner.js");
 
 var _jsxFileName = "/Users/callan/projects/colors/pages/home/Home.js";
 
@@ -27279,6 +27310,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+var API_URL = 'https://api.color.pizza/v1';
 var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "Home__Wrapper",
   componentId: "sc-1sbsg8u-0"
@@ -27287,7 +27321,7 @@ var InputWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div
   displayName: "Home__InputWrapper",
   componentId: "sc-1sbsg8u-1"
 })(["margin-bottom:20px;display:flex;"]);
-var StyledInput = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_components_Input__WEBPACK_IMPORTED_MODULE_11__["default"]).withConfig({
+var StyledInput = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_components_Input__WEBPACK_IMPORTED_MODULE_13__["default"]).withConfig({
   displayName: "Home__StyledInput",
   componentId: "sc-1sbsg8u-2"
 })(["max-width:170px;width:100%;margin:0 auto;"]);
@@ -27315,8 +27349,13 @@ var PickerBackdrop = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].d
   displayName: "Home__PickerBackdrop",
   componentId: "sc-1sbsg8u-7"
 })(["position:fixed;top:0;left:0;right:0;bottom:0;"]);
+var controller = null;
+var signal = null;
 
-function Home() {
+function Home(_ref) {
+  var initialValue = _ref.initialValue,
+      initialName = _ref.initialName;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isFetching = _useState2[0],
@@ -27327,7 +27366,7 @@ function Home() {
       error = _useState4[0],
       setError = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialName),
       _useState6 = _slicedToArray(_useState5, 2),
       colorName = _useState6[0],
       setColorName = _useState6[1];
@@ -27337,7 +27376,7 @@ function Home() {
       alternateColorName = _useState8[0],
       setAlternateColorName = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialValue),
       _useState10 = _slicedToArray(_useState9, 2),
       value = _useState10[0],
       setValue = _useState10[1];
@@ -27352,19 +27391,28 @@ function Home() {
       isShowingAlternateColorName = _useState14[0],
       setShowingAlternateColorName = _useState14[1];
 
-  var debouncedValue = Object(use_debounce__WEBPACK_IMPORTED_MODULE_5__["useDebounce"])(value, 300);
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true),
+      _useState16 = _slicedToArray(_useState15, 2),
+      isFirstRender = _useState16[0],
+      setFirstRender = _useState16[1];
+
   var isValidHex = value.length === 6 && hex_color_regex__WEBPACK_IMPORTED_MODULE_4___default()().test("#".concat(value));
+  var isValidAlternateColorName = alternateColorName && alternateColorName !== colorName;
+  var debouncedValue = Object(use_debounce__WEBPACK_IMPORTED_MODULE_5__["useDebounce"])(value, 300);
   var colorValue = isValidHex && color__WEBPACK_IMPORTED_MODULE_3___default()("#".concat(value));
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (debouncedValue.length === 6) {
+    if (!isFirstRender && debouncedValue.length === 6) {
       getColorName(debouncedValue);
     }
   }, [debouncedValue]);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (false) {}
-    var initialValue = randomcolor__WEBPACK_IMPORTED_MODULE_6___default()().slice(1);
-    setValue(initialValue);
-  }, [true]);
+    setFirstRender(false);
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {}, [true]);
+
+  function handleClickColorName() {
+    if (colorValue && isValidAlternateColorName) setShowingAlternateColorName(!isShowingAlternateColorName);
+  }
 
   function handleChangeValue(event) {
     handleChange(event.target.value);
@@ -27375,15 +27423,20 @@ function Home() {
   }
 
   function handleChange(value) {
-    var val = value;
+    var val = value; // Validation rules
+
     if (val.startsWith('#')) val = value.slice(1); // Remove the first letter
 
     if (val.length > 6) return; // Set a max character limit
 
     if (!new RegExp(/^\w*$/).test(val)) return; // Remove symbols etc.
+    // Side effects
+
+    if (val.length < 6) setColorName(null); // Reset the color name
+
+    if (controller) controller.abort(); // Cancel any ongoing API calls
 
     setValue(val);
-    if (val.length < 6) setColorName(null); // Reset the color name
   }
 
   function getColorName(_x) {
@@ -27394,7 +27447,7 @@ function Home() {
     _getColorName = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(hex) {
-      var _alternateColorName, response, _ref, colors, _error;
+      var _alternateColorName, response, _ref2, colors, _error;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -27410,60 +27463,73 @@ function Home() {
               }
 
               _context.prev = 4;
-              _context.next = 7;
-              return fetch("https://api.color.pizza/v1/".concat(hex));
+              controller = new AbortController();
+              signal = controller.signal;
+              _context.next = 9;
+              return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(API_URL, "/").concat(hex), {
+                signal: signal
+              });
 
-            case 7:
+            case 9:
               response = _context.sent;
-              _context.next = 10;
+              _context.next = 12;
               return response.json();
 
-            case 10:
-              _ref = _context.sent;
-              colors = _ref.colors;
-              _error = _ref.error;
+            case 12:
+              _ref2 = _context.sent;
+              colors = _ref2.colors;
+              _error = _ref2.error;
               if (_error) setError(_error.message);else setColorName(colors[0].name);
-              _context.next = 20;
+              _context.next = 24;
               break;
 
-            case 16:
-              _context.prev = 16;
+            case 18:
+              _context.prev = 18;
               _context.t0 = _context["catch"](4);
               // eslint-disable-next-line no-console
-              console.warn(_context.t0);
-              setError(_context.t0.toString());
+              console.warn(_context.t0); // Ignore abort errors
 
-            case 20:
-              _context.prev = 20;
-              setFetching(false);
-              return _context.finish(20);
+              if (!(_context.t0.toString() === 'AbortError: The user aborted a request.')) {
+                _context.next = 23;
+                break;
+              }
+
+              return _context.abrupt("return");
 
             case 23:
+              setError(_context.t0.toString());
+
+            case 24:
+              _context.prev = 24;
+              setFetching(false);
+              return _context.finish(24);
+
+            case 27:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[4, 16, 20, 23]]);
+      }, _callee, this, [[4, 18, 24, 27]]);
     }));
     return _getColorName.apply(this, arguments);
   }
 
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_layouts_LayoutMain__WEBPACK_IMPORTED_MODULE_11__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 185
+      lineNumber: 207
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Wrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 186
+      lineNumber: 208
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(InputWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 187
+      lineNumber: 209
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(StyledInput, {
@@ -27475,7 +27541,7 @@ function Home() {
     value: value,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 188
+      lineNumber: 210
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(InputColor, {
@@ -27486,49 +27552,7 @@ function Home() {
     color: colorValue && colorValue.isDark() && 'white' || 'black',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 197
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_ink__WEBPACK_IMPORTED_MODULE_8___default.a, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 202
-    },
-    __self: this
-  })), isPickerOpen && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Picker, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 206
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(PickerBackdrop, {
-    onClick: function onClick() {
-      return setPickerOpen(false);
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 207
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(StyledChromePicker, {
-    color: "#".concat(isValidHex ? value : 'ffffff'),
-    onChange: handleChangeColor,
-    disableAlpha: true,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 209
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ColorName, {
-    backgroundColor: error ? 'red' : colorValue ? colorValue.hex() : 'white',
-    color: colorValue && colorValue.isDark() && 'white' || 'black',
-    onClick: function onClick() {
-      return setShowingAlternateColorName(!isShowingAlternateColorName);
-    },
-    as: alternateColorName === colorName ? 'div' : 'button',
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 218
+      lineNumber: 219
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_ink__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -27537,42 +27561,132 @@ function Home() {
       lineNumber: 224
     },
     __self: this
-  }), isFetching ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Spinner__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    color: colorValue && colorValue.isDark() && 'white' || 'black',
+  })), isPickerOpen && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Picker, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 227
+      lineNumber: 228
     },
     __self: this
-  }) : error ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    color: "white",
-    align: "center",
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(PickerBackdrop, {
+    onClick: function onClick() {
+      return setPickerOpen(false);
+    },
     __source: {
       fileName: _jsxFileName,
       lineNumber: 229
     },
     __self: this
-  }, String(error)) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(StyledChromePicker, {
+    color: "#".concat(isValidHex ? value : 'ffffff'),
+    onChange: handleChangeColor,
+    disableAlpha: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 231
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ColorName, {
+    backgroundColor: error ? 'red' : colorValue ? colorValue.hex() : 'white',
+    color: colorValue && colorValue.isDark() && 'white' || 'black',
+    onClick: handleClickColorName,
+    as: isValidAlternateColorName ? 'div' : 'button',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 240
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_ink__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 246
+    },
+    __self: this
+  }), isFetching ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Spinner__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    color: colorValue && colorValue.isDark() && 'white' || 'black',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 249
+    },
+    __self: this
+  }) : error ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    color: "white",
+    align: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 251
+    },
+    __self: this
+  }, String(error)) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_12__["default"], {
     color: colorValue && colorValue.isDark() && 'white' || 'black',
     align: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 233
+      lineNumber: 255
     },
     __self: this
-  }, isShowingAlternateColorName && alternateColorName || colorName || 'No color')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, isShowingAlternateColorName && alternateColorName || colorName || 'No color')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Text__WEBPACK_IMPORTED_MODULE_12__["default"], {
     color: "#787c84",
     size: "xxs",
     align: "center",
-    opacity: alternateColorName === colorName ? 0 : 1,
+    opacity: colorValue && isValidAlternateColorName ? 1 : 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 239
+      lineNumber: 261
     },
     __self: this
   }, "Click the color name to view an alternate")));
 }
 
+Home.propTypes = {
+  initialValue: prop_types__WEBPACK_IMPORTED_MODULE_10__["string"],
+  initialName: prop_types__WEBPACK_IMPORTED_MODULE_10__["string"]
+};
+Home.getInitialProps =
+/*#__PURE__*/
+_asyncToGenerator(
+/*#__PURE__*/
+_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+  var initialValue, initialName, response, _ref4, colors;
+
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          initialValue = randomcolor__WEBPACK_IMPORTED_MODULE_6___default()().slice(1);
+          initialName = null;
+          _context2.prev = 2;
+          _context2.next = 5;
+          return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(API_URL, "/").concat(initialValue));
+
+        case 5:
+          response = _context2.sent;
+          _context2.next = 8;
+          return response.json();
+
+        case 8:
+          _ref4 = _context2.sent;
+          colors = _ref4.colors;
+          if (Array.isArray(colors)) initialName = colors[0].name;
+          _context2.next = 15;
+          break;
+
+        case 13:
+          _context2.prev = 13;
+          _context2.t0 = _context2["catch"](2);
+
+        case 15:
+          return _context2.abrupt("return", {
+            initialValue: initialValue,
+            initialName: initialName
+          });
+
+        case 16:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, _callee2, this, [[2, 13]]);
+}));
 /* harmony default export */ __webpack_exports__["default"] = (Home);
     (function (Component, route) {
       if(!Component) return
