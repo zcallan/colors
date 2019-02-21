@@ -8,6 +8,7 @@ import { ChromePicker } from 'react-color';
 import Ink from 'react-ink';
 import fetch from 'isomorphic-unfetch';
 import { string } from 'prop-types';
+import VisuallyHidden from '@reach/visually-hidden';
 
 import LayoutMain from '../../layouts/LayoutMain';
 import Text from '../../components/Text';
@@ -204,8 +205,15 @@ function Home({ initialValue, initialName }) {
   }
 
   return (
-    <LayoutMain>
+    <LayoutMain
+      title="Colors - Color Name From HEX Color Codes | zcallan"
+      description="A simple website to get the name of colors from their HEX color code with no bs or distractions"
+    >
       <Wrapper>
+        <VisuallyHidden>
+          <h1>Color Name From HEX Color Codes</h1>
+        </VisuallyHidden>
+
         <InputWrapper>
           <StyledInput
             type="text"

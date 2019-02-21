@@ -16,12 +16,17 @@ const Wrapper = styled.div`
 function LayoutMain({
   backgroundColor = 'white',
   title = 'Title',
+  description = '',
+  keywords = 'hex,color,code,to,name',
   children,
 }) {
   return (
     <Wrapper backgroundColor={backgroundColor}>
       <Head>
         <title>{title}</title>
+
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
       </Head>
 
       {children}
@@ -32,6 +37,8 @@ function LayoutMain({
 LayoutMain.propTypes = {
   backgroundColor: string,
   title: string,
+  description: string,
+  keywords: string,
   children: node,
 };
 

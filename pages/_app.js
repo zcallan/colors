@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  @-ms-viewport{
+    width: device-width;
+  }
 `;
 
 class App extends NextApp {
