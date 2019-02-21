@@ -18,14 +18,14 @@ class Document extends NextDocument {
           <meta name="author" content="Callan Delbridge" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="application-name" content="Color Names" />
-          <meta name="theme-color" content="#AA24D2" />
+          <meta name="theme-color" content="#FFFFFF" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-title" content="Color Names" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="msapplication-TileImage" content="/.png" />
-          <meta name="msapplication-TileColor" content="#F2F2F2" />
-          <meta name="msapplication-navbutton-color" content="#AA24D2" />
+          <meta name="msapplication-TileColor" content="#FFFFFF" />
+          <meta name="msapplication-navbutton-color" content="#FFFFFF" />
 
           <link rel="manifest" href="./static/manifest.json" />
 
