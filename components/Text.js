@@ -13,6 +13,7 @@ const StyledText = styled.p`
     line-height: ${props.lineHeight};
 
     ${props.align ? `text-align: ${props.align};` : ''}
+    ${props.opacity != null ? `opacity: ${props.opacity};` : ''}
 
     @media (max-width: 767px) {
       font-size: ${sizes.text[props.size].fontSize.mobile};

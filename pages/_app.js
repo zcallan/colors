@@ -14,6 +14,16 @@ const GlobalStyle = createGlobalStyle`
   #__next {
     height: 100%;
   }
+
+  @import url('https://rsms.me/inter/inter.css');
+  html { font-family: 'Inter', sans-serif; }
+  @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 class App extends NextApp {

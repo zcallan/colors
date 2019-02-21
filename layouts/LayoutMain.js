@@ -6,13 +6,15 @@ import { string, node } from 'prop-types';
 import colors from '../theme/colors';
 
 const Wrapper = styled.div`
+  height: 100%;
+
   ${props => `
     background-color: ${colors.backgrounds[props.backgroundColor] || props.backgroundColor};
   `}
 `;
 
 function LayoutMain({
-  backgroundColor = 'lightgrey',
+  backgroundColor = 'white',
   title = 'Title',
   children,
 }) {
